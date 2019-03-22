@@ -2,14 +2,12 @@
 $("#articles").hide();
 
 // grab the articles as json on "scrape" click
-$("#scrape").on("click", function() {
-  // show articles div
+$("#scrape").on("click", function() {  
   $("#articles").show();
   $.getJSON("/articles", function(data) {
-  // For each one
-  for (var i = 0; i < data.length; i++) {      
-    $("#articles").append("<div class='addnote' data-id='" + data[i]._id + "'><a href='" + data[i].link + "'><h4>" + data[i].title + "</h4></a><p>" + data[i].summary + "</p></div>");
-  }
+    for (var i = 0; i < data.length; i++) {      
+      $("#articles").append("<div class='addnote' data-id='" + data[i]._id + "'><a href='" + data[i].link + "'><h4>" + data[i].title + "</h4></a><p>" + data[i].summary + "</p></div>");
+    }
   });  
 });
 
@@ -30,7 +28,7 @@ $(document).on("click", function() {
     method: "GET",
     url: "/articles/" + thisId
   })
-    // With that done, add the note information to the page
+    //add the note information to the page
     .done(function(data) {
       console.log(data);
       // The title of the article
@@ -42,7 +40,7 @@ $(document).on("click", function() {
       // A button to submit a new note, with the id of the article saved to it
       $("#notes").append("<button data-id='" + data._id + "' id='savenote'>Save Note</button>");
 
-      // If there's a note in the article
+      // if note
       if (data.note) {
         // Place the title of the note in the title input
         $("#titleinput").val(data.note.title);
@@ -52,11 +50,9 @@ $(document).on("click", function() {
     });
 });
 
-// When you click the savenote button
-$(document).on("click", "#savenote", function() {
-  // Grab the id associated with the article from the submit button
+//savenote button
+$(document).on("click", "#savenote", function() {  
   var thisId = $(this).attr("data-id");
-
   // Run a POST request to change the note, using what's entered in the inputs
   $.ajax({
     method: "POST",

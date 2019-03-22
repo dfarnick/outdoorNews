@@ -1,10 +1,5 @@
  
-  $.getJSON("/articles", function(data) {
-    for (var i = 0; i < data.length; i++) {      
-      $("#articles").append("<div class='addnote' data-id='" + data[i]._id + "'><a href='" + data[i].link + "'><h4>" + data[i].title + "</h4></a><p>" + data[i].summary + "</p></div>");
-    }
-  });  
-
+  
 $("#scrape").on("click", function() {  
   $.ajax({
     method: "GET",
@@ -12,7 +7,14 @@ $("#scrape").on("click", function() {
 })
     .then(function (data) {
         console.log(data);
-    });
+    })
+    .then(function(data){
+      $.getJSON("/articles", function(data) {
+        for (var i = 0; i < data.length; i++) {      
+          $("#articles").append("<div class='addnote' data-id='" + data[i]._id + "'><a href='" + data[i].link + "'><h4>" + data[i].title + "</h4></a><p>" + data[i].summary + "</p></div>");
+        }
+      });
+    })
 });
 
 // Whenever someone clicks a p tag

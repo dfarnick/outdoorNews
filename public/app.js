@@ -1,23 +1,22 @@
-
-$("#articles").hide();
-
-// grab the articles as json on "scrape" click
-$("#scrape").on("click", function() {  
-  $("#articles").show();
+ 
   $.getJSON("/articles", function(data) {
     for (var i = 0; i < data.length; i++) {      
       $("#articles").append("<div class='addnote' data-id='" + data[i]._id + "'><a href='" + data[i].link + "'><h4>" + data[i].title + "</h4></a><p>" + data[i].summary + "</p></div>");
     }
   });  
-});
 
-// push saved articles to favorites page on button click
-$("#articles").on("click", ".addNote", function() {
-  console.log("clicked");
+$("#scrape").on("click", function() {  
+  $.ajax({
+    method: "GET",
+    url: "/scrape"
+})
+    .then(function (data) {
+        console.log(data);
+    });
 });
 
 // Whenever someone clicks a p tag
-$(document).on("click", function() {
+$(document).on("click", ".addnote", function() {
   // Empty the notes from the note section
   $("#notes").empty();
   // Save the id from the p tag
@@ -40,11 +39,9 @@ $(document).on("click", function() {
       // A button to submit a new note, with the id of the article saved to it
       $("#notes").append("<button data-id='" + data._id + "' id='savenote'>Save Note</button>");
 
-      // if note
       if (data.note) {
-        // Place the title of the note in the title input
-        $("#titleinput").val(data.note.title);
-        // Place the body of the note in the body textarea
+        
+        $("#titleinput").val(data.note.title);     
         $("#bodyinput").val(data.note.body);
       }
     });
@@ -64,10 +61,11 @@ $(document).on("click", "#savenote", function() {
       body: $("#bodyinput").val()
     }
   })
-        .done(function(data) {
-      console.log(data);
-      $("#notes").empty();
-    });
+       
+        .then(function (data) {        
+          console.log(data);          
+          $("#notes").empty();
+      });
 
   // clear them
   $("#titleinput").val("");

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS"
+        crossorigin="anonymous">
+    
+    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+    <title>News Scraping</title>
+    <style>
+        body {
+            
+            font-family: 'Montserrat', sans-serif;
+        }
+        .jumbotron {
+            text-align: center;
+            background-color: White;
+            color: lightskyblue;
+        }
+        hr {
+            color:black;
+        }
+        #wrapper {
+            width: 960px;
+            margin-left: auto;
+            margin-right: auto;
+            padding-top: 5%;
+        }
+        #articles {
+            display: inline-block;
+            overflow: auto;
+            width: 60%;
+            height: 700px;
+        }
+        #notes {
+            float: right;
+            width: 30%;
+        }
+        textarea,
+        input {
+            display: block;
+            width: 100%;
+            background-color: rgb(243, 243, 243);
+        }
+        input {
+            height: 36px;
+            font-size: 24px;
+        }
+        textarea {
+            height: 200px;
+            font-size: 18px;
+        }
+        #addcolor {
+            background: white;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="wrapper">
+
+        <div class="jumbotron">
+						<!-- <h1 class="display-4">Google... where you find everything.</h1> -->
+						<div>
+						<img src="img/newyork.png">
+						</div>
+            <!-- <hr class="my-4"> -->
+            <a class="btn btn-primary btn-lg" href="#" role="button" id="scrape">Scrape</a>
+                        
+        </div>
+
+        <div class="card">
+
+            <div id="addcolor" class="card-body">
+
+                <div id="articles" style="float:left;"></div>
+                <div id="notes" style="float:right;"></div>
+      
+            </div>
+        </div>
+
+
+    </div>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="app.js"></script>
+</body>
+
+</html>
